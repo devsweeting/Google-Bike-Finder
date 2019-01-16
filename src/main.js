@@ -10,6 +10,11 @@ import mapboxgl from 'mapbox-gl';
 $('#map-form').submit(function() {
   $('#location').val()
 })
+let nullIsland = new mapboxgl.MercatorCoordinate(-74.50, 40, 0);
+
+$('#go-here').click(function() {
+  L.marker([50.5, 30.5]).addTo(map);
+});
 mapboxgl.accessToken = 'pk.eyJ1IjoibWlsbGVycXVpbm42NiIsImEiOiJjanF6cXZzOWYwMmNvNDZsamt4d2MzdGt6In0.vWmStGk3pdqYpZX-SGutKA';
 var map = new mapboxgl.Map({
     container: 'map',
