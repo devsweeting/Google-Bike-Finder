@@ -9,8 +9,10 @@ $(document).ready(function() {
   let promise = newApi.call();
   promise.then(function(response) {
     let body = JSON.parse(response);
-    $('#return').text(`return from api = ${body}`);
-  })
+    body.bikes.forEach(function(bike) {
+      $('#solution').append("<li> Bike " + bike.title + "</li>");
+    });
+  });
 
 
 });
