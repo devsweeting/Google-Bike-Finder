@@ -17,5 +17,6 @@ $(document).ready(function() {
         $('#solution').append("<li> Bike " + bike.title + "</li>");
       });
     });
+  $("#return").show()
   });
 });
