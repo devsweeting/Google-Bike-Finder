@@ -5,7 +5,7 @@ export class Api {
   call(distance) {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      let url = `https://bikeindex.org:443/api/v3/search?page=1&per_page=25&location=IP&distance=${distance}&stolenness=stolen&access_token=6abd63b5c4500507bf28eb9c6a6a1089a63192780929787bf23681966e3bb3f7`;
+      let url = `https://bikeindex.org:443/api/v3/search?page=1&per_page=25&location=IP&distance=${distance}&stolenness=stolen&access_token=${process.env.BIKE_API}`;
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
@@ -17,4 +17,37 @@ export class Api {
       request.send();
     });
   }
+  geoCode() {
+    return new Promise(function(resolve, reject) {
+      let request = new XMLHttpRequest();
+      let url = `https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${process.env.GEOCODING_API}`;
+      request.onload = function() {
+        if (this.status === 200) {
+          resolve(request.response);
+        } else {
+          reject(Error(request.statusText));
+        }
+      }
+      request.open("GET", url, true);
+      request.send();
+
+    });
+  }
+  //   var data = null;
+  //
+  //   var xhr = new XMLHttpRequest();
+  //   xhr.withCredentials = true;
+  //
+  //   xhr.addEventListener("readystatechange", function () {
+  //     if (this.readyState === 4) {
+  //       console.log(this.responseText);
+  //     }
+  //   });
+  //
+  //   xhr.open("GET", );
+  //   xhr.setRequestHeader("Cache-Control", "no-cache");
+  //   xhr.setRequestHeader("Postman-Token", "79be00c3-767e-4b0f-8c3b-f7ac6003cef9");
+  //
+  //   xhr.send(data);
+  // }
 }

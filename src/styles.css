@@ -1,16 +1,18 @@
-body {
-  background-color: #7FDBFF;
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+
+#map {
+  height: 400px;
+  width: 100%;
+
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 #return {
   display: none;
-  margin-top: 30px;
-}
-
-#map {
-  width: 500px;
-  height: 750px;
-}
-#go-here {
-  margin-top: 1000px;
 }

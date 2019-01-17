@@ -1,35 +1,43 @@
+import { Map} from './map';
 import { Api } from './api';
 import './styles.css';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import mapboxgl from 'mapbox-gl';
+const loadGoogleMapsApi = require('load-google-maps-api')
 
 
-// import mapboxgl from 'mapbox-gl';
-$('#map-form').submit(function() {
-  $('#location').val()
-})
-let nullIsland = new mapboxgl.MercatorCoordinate(-74.50, 40, 0);
 
-$('#go-here').click(function() {
-  L.marker([50.5, 30.5]).addTo(map);
+$(document).ready(function() {
+  let geoApi = new Api();
+  let geoPromise = geoApi.geoCode();
+  geoPromise.then(function(geoResponse) {
+    let body = JSON.parse(geoResponse);
+  });
+
+
+
+
+    let mapElement = document.getElementById('map');
+    let loadPromise = Map.loadMap();
+    loadPromise.then(function(googleMaps) {
+      let map = Map.createMap(googleMaps, mapElement);
+    });
+
+
+  // $(".distance").submit(function(event){
+  //   event.preventDefault();
+  //   let distance = $("#user-distance").val();
+  //   console.log(distance);
+  //   let newApi = new Api();
+  //   let promise = newApi.call(distance);
+  //   promise.then(function(response) {
+  //     let body = JSON.parse(response);
+  //     body.bikes.forEach(function(bike) {
+  //       $('#solution').append("<li> Bike " + bike.title + "</li>");
+  //     });
+  //     debugger
+  //   });
+  // $("#return").show()
+  // });
 });
-mapboxgl.accessToken = 'pk.eyJ1IjoibWlsbGVycXVpbm42NiIsImEiOiJjanF6cXZzOWYwMmNvNDZsamt4d2MzdGt6In0.vWmStGk3pdqYpZX-SGutKA';
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/satellite-streets-v10',
-    center: [-74.50, 40],
-    zoom: 9,
-});
-
-// Add zoom and rotation controls to the map
-map.addControl(new mapboxgl.NavigationControl());
-
-
-map.addControl(new mapboxgl.GeolocateControl({
-    positionOptions: {
-        enableHighAccuracy: true
-    },
-    trackUserLocation: true
-}));

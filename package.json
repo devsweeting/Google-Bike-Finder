@@ -10,7 +10,7 @@
     "test": "jasmine"
   },
   "keywords": [],
-  "author": "",
+  "author": "Devin Sweeting",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -39,7 +39,10 @@
   },
   "dependencies": {
     "bootstrap": "^4.2.1",
+    "load-google-maps-api": "^1.3.2",
+    "dotenv-webpack": "^1.6.0",
     "jquery": "^3.3.1",
+    "leaflet": "^1.4.0",
     "mapbox-gl": "^0.52.0",
     "popper.js": "^1.14.6"
   }
