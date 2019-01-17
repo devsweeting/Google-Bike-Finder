@@ -21,12 +21,12 @@ export class Map {
   }
 }
  //
- //  static placeMarkerAndPanTo(googleMaps, latLng, map) {
- //    let marker = new googleMaps.Marker({
- //       position: latLng,
- //       map: map,
- //       draggable:true,
- //    });
+  // static placeMarkerAndPanTo(googleMaps, latlong, map) {
+  //   let marker = new googleMaps.Marker({
+  //      position: latlong,
+  //      map: map,
+  //      draggable:true,
+  //   });
  //    // this.markers.push(marker)
  //    map.panTo(latLng);
  //    return marker;

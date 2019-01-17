@@ -2,13 +2,13 @@ export class Api {
   constructor() {
 
   }
-  call(distance) {
+  callBike(distance) {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
       let url = `https://bikeindex.org:443/api/v3/search?page=1&per_page=25&location=IP&distance=${distance}&stolenness=stolen&access_token=${process.env.BIKE_API}`;
       request.onload = function() {
         if (this.status === 200) {
-          resolve(request.response);
+          // resolve(request.response);
         } else {
           reject(Error(request.statusText));
         }
@@ -17,10 +17,10 @@ export class Api {
       request.send();
     });
   }
-  geoCode() {
+  geoCode(address) {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      let url = `https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${process.env.GEOCODING_API}`;
+      let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GEOCODING_API}`;
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
