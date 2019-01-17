@@ -8,7 +8,7 @@ export class Api {
       let url = `https://bikeindex.org:443/api/v3/search?page=1&per_page=25&location=IP&distance=${distance}&stolenness=stolen&access_token=${process.env.BIKE_API}`;
       request.onload = function() {
         if (this.status === 200) {
-          // resolve(request.response);
+          resolve(request.response);
         } else {
           reject(Error(request.statusText));
         }

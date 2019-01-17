@@ -20,14 +20,3 @@ export class Map {
     });
   }
 }
- //
-  // static placeMarkerAndPanTo(googleMaps, latlong, map) {
-  //   let marker = new googleMaps.Marker({
-  //      position: latlong,
-  //      map: map,
-  //      draggable:true,
-  //   });
- //    // this.markers.push(marker)
- //    map.panTo(latLng);
- //    return marker;
- // }
