@@ -30,7 +30,6 @@ export class Api {
       }
       request.open("GET", url, true);
       request.send();
-
     });
   }
   //   var data = null;
